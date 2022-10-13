@@ -1,20 +1,23 @@
-import View from './View.js';
+import View from "./View.js";
 
-import icons from 'url:../../img/icons.svg';
-import { Fraction } from 'fractional';
+import icons from "url:../../img/icons.svg";
+import { Fraction } from "fractional";
+// var Fraction = require('fractional').Fraction
 
 class RecipeView extends View {
-  _parentElement = document.querySelector('.recipe');
-  _messageError = 'No recipes found for your query. Please try again!';
-  _message = '';
+  _parentElement = document.querySelector(".recipe");
+  _messageError = "No recipes found for your query. Please try again!";
+  _message = "";
 
   addHandlerRender(handler) {
-    ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
+    ["hashchange", "load"].forEach((ev) =>
+      window.addEventListener(ev, handler)
+    );
   }
 
   addHandlerUpdateServings(handler) {
-    this._parentElement.addEventListener('click', function (e) {
-      const btn = e.target.closest('.btn--update-servings');
+    this._parentElement.addEventListener("click", function (e) {
+      const btn = e.target.closest(".btn--update-servings");
       if (!btn) return;
       const { updateTo } = btn.dataset;
       if (+updateTo > 0) handler(+updateTo);
@@ -22,8 +25,8 @@ class RecipeView extends View {
   }
 
   addHandlerAddBookmark(handler) {
-    this._parentElement.addEventListener('click', function (e) {
-      const btn = e.target.closest('.btn--bookmark');
+    this._parentElement.addEventListener("click", function (e) {
+      const btn = e.target.closest(".btn--bookmark");
       if (!btn) return;
       handler();
     });
@@ -77,7 +80,7 @@ class RecipeView extends View {
             </div>
           </div>
 
-          <div class="recipe__user-generated ${this._data.key ? '' : 'hidden'}">
+          <div class="recipe__user-generated ${this._data.key ? "" : "hidden"}">
             <svg>
               <use href="${icons}#icon-user"></use>
             </svg>
@@ -85,7 +88,7 @@ class RecipeView extends View {
           <button class="btn--round btn--bookmark">
             <svg class="">
               <use href="${icons}#icon-bookmark${
-      this._data.bookmarked ? '-fill' : ''
+      this._data.bookmarked ? "-fill" : ""
     }"></use>
             </svg>
           </button>
@@ -96,7 +99,7 @@ class RecipeView extends View {
           <ul class="recipe__ingredient-list">
             ${this._data.ingredients
               .map(this._generateMarkupIngredients)
-              .join('')}
+              .join("")}
           </ul>
         </div>
 
@@ -129,7 +132,7 @@ class RecipeView extends View {
           <use href="${icons}#icon-check"></use>
         </svg>
         <div class="recipe__quantity">${
-          ing.quantity ? new Fraction(ing.quantity) : ''
+          ing.quantity ? new Fraction(ing.quantity) : ""
         }</div>
         <div class="recipe__description">
           <span class="recipe__unit">${ing.unit}</span>
