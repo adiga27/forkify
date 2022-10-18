@@ -1,19 +1,61 @@
 .header {
   grid-area: head;
-  background-color: $color-grey-light-1;
+  background-color: var(--color-grey-light-1);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2.5rem;
+  }
 
   &__logo {
     margin-left: 4rem;
     height: 4.6rem;
     display: block;
+    @media only screen and (max-width: $bp-smallest) {
+      height: 3.6rem;
+      margin-left: 2rem;
+    }
+  }
+  &__menu {
+    display: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    @media only screen and (max-width: $bp-small) {
+      z-index: 100;
+      padding: 2rem 0rem 2rem 2rem;
+      &:hover {
+        background-color: var(--color-preview-hover);
+      }
+    }
+
+    &--icon {
+      height: 3.6rem;
+      width: 3.6rem;
+      fill: var(--color-primary);
+      margin-right: 4rem;
+      @media only screen and (max-width: $bp-small) {
+        margin-right: 2rem;
+      }
+    }
+    &--icon[name="close-outline"] {
+      display: none;
+    }
+    @media only screen and (max-width: $bp-small) {
+      display: block;
+    }
   }
 }
 
 .search {
-  background-color: #fff;
+  background-color: var(--color-search);
   border-radius: 10rem;
   display: flex;
   align-items: center;
@@ -22,7 +64,7 @@
 
   &:focus-within {
     transform: translateY(-2px);
-    box-shadow: 0 0.7rem 3rem rgba($color-grey-dark-1, 0.08);
+    box-shadow: 0 0.7rem 3rem rgba(var(--color-grey-dark-1), 0.08);
   }
 
   &__field {
@@ -38,15 +80,14 @@
     }
 
     &::placeholder {
-      color: $color-grey-light-3;
+      color: var(--color-grey-light-3);
     }
 
+    @media only screen and (max-width: $bp-large) {
+      width: auto;
+    }
     @media only screen and (max-width: $bp-medium) {
       width: auto;
-
-      &::placeholder {
-        color: white;
-      }
     }
   }
 
@@ -54,20 +95,111 @@
     font-weight: 600;
     font-family: inherit;
   }
+  @media only screen and (max-width: $bp-small) {
+    .btn {
+      & > *:first-child {
+        margin-right: 0;
+      }
+    }
+    &__field {
+      width: auto;
+    }
+    &__btn {
+      padding: 1.4rem 2rem;
+
+      span {
+        display: none;
+      }
+    }
+  }
+  @media only screen and (max-width: $bp-smallest) {
+    &__field {
+      width: 13rem;
+    }
+    &__btn {
+      padding: 1.2rem 1.8rem;
+    }
+  }
+  @media only screen and (max-width: $bp-small) {
+    margin-right: 1rem;
+  }
 }
+
+// .nav-open .main-nav {
+//   opacity: 1;
+//   pointer-events: auto;
+//   visibility: visible;
+//   transform: translateX(0);
+// }
+//
+
+// .main-nav-list {
+//   flex-direction: column;
+//   gap: 4.8rem;
+// }
+// .main-nav-link:link,
+// .main-nav-link:visited {
+//   font-size: 3rem;
+// }
 
 .nav {
   align-self: stretch;
-  margin-right: 2.5rem;
+  // margin-right: 2.5rem;
+
+  &__mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    background-color: var(--color-bookmark);
+    position: absolute;
+    top: 10rem;
+    right: 0;
+    transform: translatex(100%);
+    margin-right: 0;
+
+    display: flex;
+    transition: all 0.5s ease-in;
+
+    //   /* HIDE NAV */
+    //   /* 1)Hide it visiually */
+    opacity: 0;
+    //   /* 2)Make it unacessible to mouse and keyboard */
+    pointer-events: none;
+    //   /* 3)Hide it from screen readers */
+    visibility: hidden;
+    border-bottom-left-radius: 0.9rem;
+    border-bottom-right-radius: 0.9rem;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    width: 18rem;
+    justify-content: center;
+  }
 
   &__list {
     list-style: none;
     display: flex;
     height: 100%;
+
+    @media only screen and (max-width: $bp-small) {
+      flex-direction: column;
+      // gap: 2rem;
+      justify-content: stretch;
+      align-items: stretch;
+      box-shadow: 0 0.8rem 5rem 2rem rgba(var(--color-grey-dark-1), 0.1);
+    }
   }
 
   &__item {
     position: relative;
+    @media only screen and (max-width: $bp-small) {
+      &:first-child {
+        border-bottom: 0.1rem solid var(--color-grey-light-1);
+      }
+    }
   }
 
   &__btn {
@@ -80,8 +212,20 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0 1.5rem;
+    padding: 3.5rem 1.5rem;
     transition: all 0.3s;
+
+    @media only screen and (max-width: $bp-small) {
+      justify-content: center;
+      font-size: 3rem;
+      // padding: 2rem 4rem;
+      span {
+        font-size: 1.5rem;
+      }
+    }
+    @media only screen and (max-width: $bp-smallest) {
+      // width: 15rem;
+    }
 
     display: flex;
     align-items: center;
@@ -89,7 +233,7 @@
     svg {
       height: 2.4rem;
       width: 2.4rem;
-      fill: $color-primary;
+      fill: var(--color-primary);
       margin-right: 0.7rem;
       transform: translateY(-1px);
     }
@@ -99,7 +243,29 @@
     }
 
     &:hover {
-      background-color: $color-grey-light-2;
+      background-color: var(--color-bookmark-hover);
+    }
+  }
+}
+
+@media only screen and (max-width: $bp-small) {
+  .nav-open {
+    & .nav {
+      // padding-top: 10rem;
+      position: absolute;
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+      transform: translatex(0%);
+      transition: all 0.5s ease-out;
+      z-index: 100;
+    }
+
+    & .header__menu--icon[name="menu-outline"] {
+      display: none;
+    }
+    & .header__menu--icon[name="close-outline"] {
+      display: block;
     }
   }
 }
@@ -111,12 +277,23 @@
   right: -2.5rem;
   z-index: 10;
   width: 40rem;
-  background-color: #fff;
-  box-shadow: 0 0.8rem 5rem 2rem rgba($color-grey-dark-1, 0.1);
+  background-color: var(--color-bookmark);
+  box-shadow: 0 0.8rem 5rem 2rem rgba(var(--color-grey-dark-1), 0.1);
 
   visibility: hidden;
   opacity: 0;
   transition: all 0.5s 0.2s;
+
+  @media only screen and (max-width: $bp-small) {
+    right: 0rem;
+    top: 9.4rem;
+    width: 27rem;
+  }
+  @media only screen and (max-width: $bp-smallest) {
+    right: -1rem;
+    top: 9.4rem;
+    width: 18rem;
+  }
 
   &__list {
     list-style: none;
@@ -132,7 +309,7 @@
     transition: all 0.3s;
 
     &:hover {
-      background-color: $color-grey-light-2;
+      background-color: var(--color-grey-light-2);
     }
   }
 

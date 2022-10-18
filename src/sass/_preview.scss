@@ -1,4 +1,13 @@
 .preview {
+  // &__checkbox {
+  //   display: none;
+  // }
+  // @media only screen and (max-width: $bp-smallest) {
+  //   &__checkbox {
+  //     display: block;
+  //   }
+  // }
+
   &__link {
     &:link,
     &:visited {
@@ -6,17 +15,24 @@
       align-items: center;
       padding: 1.5rem 3.25rem;
       transition: all 0.3s;
-      border-right: 1px solid #fff;
+      // border-right: 1px solid #fff;
       text-decoration: none;
+      @media only screen and (max-width: $bp-small) {
+        padding: 1.5rem;
+      }
+      @media only screen and (max-width: $bp-smallest) {
+        padding: 1rem;
+        justify-content: center;
+      }
     }
 
     &:hover {
-      background-color: $color-grey-light-1;
+      background-color: var(--color-preview-hover);
       transform: translateY(-2px);
     }
 
     &--active {
-      background-color: $color-grey-light-1;
+      background-color: var(--color-preview);
     }
   }
 
@@ -28,21 +44,24 @@
     margin-right: 2rem;
     position: relative;
     backface-visibility: hidden;
+    @media only screen and (max-width: $bp-smallest) {
+      margin-right: 0;
+    }
 
     &::before {
-      content: '';
+      content: "";
       display: block;
       height: 100%;
       width: 100%;
       position: absolute;
       top: 0;
       left: 0;
-      background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
-      );
-      opacity: 0.4;
+      // background-image: linear-gradient(
+      //   to right bottom,
+      //   var(--color-grad-1),
+      //   var(--color-grad-2)
+      // );
+      opacity: 1;
     }
 
     img {
@@ -60,12 +79,15 @@
     grid-template-columns: 1fr 2rem;
     row-gap: 0.1rem;
     align-items: center;
+    @media only screen and (max-width: $bp-smallest) {
+      display: none;
+    }
   }
 
   &__title {
     grid-column: 1/-1;
     font-size: 1.45rem;
-    color: $color-primary;
+    color: var(--color-primary);
     text-transform: uppercase;
     font-weight: 600;
 
@@ -78,13 +100,14 @@
 
   &__publisher {
     font-size: 1.15rem;
-    color: $color-grey-dark-2;
+    color: var(--color-grey-dark-2);
     text-transform: uppercase;
     font-weight: 600;
   }
 
   &__user-generated {
-    background-color: darken($color-grey-light-2, 2%);
+    background-color: darken(#fff5f2, 2%);
+    // background-color: darken(color-grey-light-2, 2%);
 
     display: flex;
     align-items: center;
@@ -99,7 +122,15 @@
     svg {
       height: 1.2rem;
       width: 1.2rem;
-      fill: $color-primary;
+      fill: var(--color-primary);
     }
   }
 }
+// @media only screen and (max-width: $bp-smallest) {
+//   .preview__checkbox:checked ~ .recipe {
+//     display: block;
+//     .search-results {
+//       display: none;
+//     }
+//   }
+// }

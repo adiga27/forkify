@@ -1,16 +1,18 @@
-import * as modal from './modal.js';
-import { MODAL_CLOSE_SEC } from './config.js';
-import recipeView from './view/recipeView.js';
-import searchView from './view/searchView.js';
-import resultsView from './view/resultsView.js';
-import paginationView from './view/paginationView.js';
-import bookmarksView from './view/bookmarksView.js';
-import addRecipeView from './view/addRecipeView.js';
+import * as modal from "./modal.js";
+import { MODAL_CLOSE_SEC } from "./config.js";
+import recipeView from "./view/recipeView.js";
+import searchView from "./view/searchView.js";
+// import menuView from "./view/menuView.js";
+// import mobileView from "./view/mobilePreview";
+import resultsView from "./view/resultsView.js";
+import paginationView from "./view/paginationView.js";
+import bookmarksView from "./view/bookmarksView.js";
+import addRecipeView from "./view/addRecipeView.js";
 
-import icons from 'url:../img/icons.svg';
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-import { async } from 'regenerator-runtime';
+import icons from "url:../img/icons.svg";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import { async } from "regenerator-runtime";
 
 // const recipeContainer = document.querySelector('.recipe');
 
@@ -123,7 +125,7 @@ const controlAddRecipe = async function (newRecipe) {
     bookmarksView.render(modal.state.bookmarks);
 
     // Change ID in the URL
-    window.history.pushState(null, '', `#${modal.state.recipe.id}`);
+    window.history.pushState(null, "", `#${modal.state.recipe.id}`);
     // window.history.back();
 
     //Close form window

@@ -12,19 +12,19 @@
 
     <link rel="stylesheet" href="src/sass/main.scss" />
     <script type="module" defer src="src/js/controller.js"></script>
-
-    <title>forkify // Search over 1,000,000 recipes</title>
+    <script type="module" defer src="src/js/view/menuView.js"></script>
+    <title>Forkify</title>
   </head>
 
   <body>
     <div class="container">
       <header class="header">
-        <img src="src/img/logo.png" alt="Logo" class="header__logo" />
+        <img src="src/img/logo-1.png" alt="Logo" class="header__logo" />
         <form class="search">
           <input
             type="text"
             class="search__field"
-            placeholder="Search over 1,000,000 recipes..."
+            placeholder="Search Recipes..."
           />
           <button class="btn search__btn">
             <svg class="search__icon">
@@ -33,38 +33,39 @@
             <span>Search</span>
           </button>
         </form>
-
-        <nav class="nav">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <button class="nav__btn nav__btn--add-recipe">
-                <svg class="nav__icon">
-                  <use href="src/img/icons.svg#icon-edit"></use>
-                </svg>
-                <span>Add recipe</span>
-              </button>
-            </li>
-            <li class="nav__item">
-              <button class="nav__btn nav__btn--bookmarks">
-                <svg class="nav__icon">
-                  <use href="src/img/icons.svg#icon-bookmark"></use>
-                </svg>
-                <span>Bookmarks</span>
-              </button>
-              <div class="bookmarks">
-                <ul class="bookmarks__list">
-                  <div class="message">
-                    <div>
-                      <svg>
-                        <use href="src/img/icons.svg#icon-smile"></use>
-                      </svg>
+        <!-- <div class="nav"></div> -->
+        <div class="header__nav">
+          <nav class="nav">
+            <ul class="nav__list">
+              <li class="nav__item">
+                <button class="nav__btn nav__btn--add-recipe">
+                  <svg class="nav__icon">
+                    <use href="src/img/icons.svg#icon-edit"></use>
+                  </svg>
+                  <span>Add Recipes</span>
+                </button>
+              </li>
+              <li class="nav__item">
+                <button class="nav__btn nav__btn--bookmarks">
+                  <svg class="nav__icon">
+                    <use href="src/img/icons.svg#icon-bookmark"></use>
+                  </svg>
+                  <span>Bookmarks</span>
+                </button>
+                <div class="bookmarks">
+                  <ul class="bookmarks__list">
+                    <div class="message">
+                      <div>
+                        <svg>
+                          <use href="src/img/icons.svg#icon-smile"></use>
+                        </svg>
+                      </div>
+                      <p>
+                        No bookmarks yet. Find a nice recipe and bookmark it :)
+                      </p>
                     </div>
-                    <p>
-                      No bookmarks yet. Find a nice recipe and bookmark it :)
-                    </p>
-                  </div>
 
-                  <!-- <li class="preview">
+                    <!-- <li class="preview">
                     <a class="preview__link" href="#23456">
                       <figure class="preview__fig">
                         <img src="src/img/test-1.jpg" alt="Test" />
@@ -77,11 +78,30 @@
                       </div>
                     </a>
                   </li> -->
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </nav>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="nav__mobile">
+            <a class="nav__btn dark-link">
+              <svg>
+                <use
+                  href="src/img/icons.svg#icon-sun"
+                  class="nav__icon dark-icon"
+                ></use>
+              </svg>
+            </a>
+            <button class="header__menu">
+              <svg class="header__menu--icon" name="menu-outline">
+                <use href="src/img/icons.svg#icon-menu"></use>
+              </svg>
+              <svg class="header__menu--icon" name="close-outline">
+                <use href="src/img/icons.svg#icon-close"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
       </header>
 
       <div class="search-results">
@@ -139,7 +159,10 @@
               <use href="src/img/icons.svg#icon-smile"></use>
             </svg>
           </div>
-          <p>Start by searching for a recipe or an ingredient. Have fun!</p>
+          <p>
+            Start by searching for a recipe or an ingredient. Have fun! Example:
+            Pizza, Pasta, Burger
+          </p>
         </div>
 
         <!-- <div class="spinner">
@@ -262,24 +285,60 @@
         <div class="upload__column">
           <h3 class="upload__heading">Recipe data</h3>
           <label>Title</label>
-          <input value="TEST27" required name="title" type="text" />
+          <input
+            value=""
+            required
+            name="title"
+            type="text"
+            placeholder="Cheese Pizzaa"
+          />
           <label>URL</label>
-          <input value="TEST27" required name="sourceUrl" type="text" />
+          <input
+            value=""
+            required
+            name="sourceUrl"
+            type="text"
+            placeholder="https://www.mybakingaddiction.com/pizza-dip/"
+          />
           <label>Image URL</label>
-          <input value="TEST27" required name="image" type="text" />
+          <input
+            value=""
+            required
+            name="image"
+            type="text"
+            placeholder="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGl6emF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+          />
           <label>Publisher</label>
-          <input value="TEST27" required name="publisher" type="text" />
+          <input
+            value=""
+            required
+            name="publisher"
+            type="text"
+            placeholder="Krishna Adiga"
+          />
           <label>Prep time</label>
-          <input value="23" required name="cookingTime" type="number" />
+          <input
+            value=""
+            required
+            name="cookingTime"
+            type="number"
+            placeholder="45 min"
+          />
           <label>Servings</label>
-          <input value="23" required name="servings" type="number" />
+          <input
+            value=""
+            required
+            name="servings"
+            type="number"
+            placeholder="4 people"
+          />
         </div>
 
         <div class="upload__column">
           <h3 class="upload__heading">Ingredients</h3>
           <label>Ingredient 1</label>
           <input
-            value="0.5,kg,Rice"
+            value=""
             type="text"
             required
             name="ingredient-1"
@@ -287,14 +346,14 @@
           />
           <label>Ingredient 2</label>
           <input
-            value="1,,Avocado"
+            value=""
             type="text"
             name="ingredient-2"
             placeholder="Format: 'Quantity,Unit,Description'"
           />
           <label>Ingredient 3</label>
           <input
-            value=",,salt"
+            value=""
             type="text"
             name="ingredient-3"
             placeholder="Format: 'Quantity,Unit,Description'"

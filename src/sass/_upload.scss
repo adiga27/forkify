@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100rem;
-  background-color: white;
+  background-color: var(--color-upload);
   border-radius: 9px;
 
   padding: 5rem 6rem;
@@ -22,6 +22,16 @@
     cursor: pointer;
     border: none;
     background: none;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    width: 80rem;
+    padding: 3rem 4rem;
+  }
+  @media only screen and (max-width: $bp-small) {
+    padding: 3rem 3rem;
+  }
+  @media only screen and (max-width: $bp-smallest) {
+    width: 40rem;
   }
 }
 
@@ -46,12 +56,25 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem 6rem;
+  @media only screen and (max-width: $bp-medium) {
+    gap: 3rem 5rem;
+  }
+  @media only screen and (max-width: $bp-small) {
+    gap: 3rem 4rem;
+  }
+  @media only screen and (max-width: $bp-smallest) {
+    grid-template-columns: 1fr;
+  }
 
   &__column {
     display: grid;
     grid-template-columns: 1fr 2.8fr;
     align-items: center;
     gap: 1.5rem;
+
+    @media only screen and (max-width: $bp-small) {
+      gap: 1rem;
+    }
 
     & label {
       font-size: 1.5rem;
@@ -62,18 +85,20 @@
     & input {
       font-size: 1.5rem;
       padding: 0.8rem 1rem;
-      border: 1px solid #ddd;
+      color: var(--color-write);
+      border: 1px solid var(--color-border);
+      background-color: var(--color-search);
       border-radius: 0.5rem;
       transition: all 0.2s;
 
       &::placeholder {
-        color: $color-grey-light-3;
+        color: var(--color-grey-light-3);
       }
 
       &:focus {
         outline: none;
-        border: 1px solid $color-primary;
-        background-color: $color-grey-light-1;
+        border: 1px solid var(--color-focus);
+        background-color: var(--color-search);
       }
     }
 

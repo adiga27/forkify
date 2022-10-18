@@ -1,5 +1,6 @@
 .recipe {
-  background-color: $color-grey-light-1;
+  background-color: var(--color-grey-light-1);
+  position: relative;
 
   ///////////
   // FIGURE
@@ -8,21 +9,20 @@
     position: relative;
     // transform: scale(1.04) translateY(-1px);
     transform-origin: top;
+    @media only screen and (max-width: $bp-smallest) {
+      height: 27rem;
+    }
 
     &::before {
-      content: '';
+      content: "";
       display: block;
       height: 100%;
       width: 100%;
       position: absolute;
       top: 0;
       left: 0;
-      background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
-      );
-      opacity: 0.6;
+      background-image: var(--gradient-3);
+      opacity: 1;
     }
   }
 
@@ -38,7 +38,7 @@
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 20%) skewY(-6deg);
-    color: #fff;
+    color: var(--color-grey-fill);
     font-weight: 700;
     font-size: 3.25rem;
     text-transform: uppercase;
@@ -52,13 +52,19 @@
       padding: 1.3rem 2rem;
       background-image: linear-gradient(
         to right bottom,
-        $color-grad-1,
-        $color-grad-2
+        var(--color-grad-1),
+        var(--color-grad-2)
       );
     }
 
     @media only screen and (max-width: $bp-medium) {
       width: 70%;
+    }
+    @media only screen and (max-width: $bp-small) {
+      font-size: 3rem;
+    }
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 2.5rem;
     }
   }
 
@@ -68,6 +74,9 @@
     display: flex;
     align-items: center;
     padding: 7.5rem 8rem 3.5rem 8rem;
+    @media only screen and (max-width: $bp-smallest) {
+      padding: 7.5rem 2rem 2rem 2rem;
+    }
   }
 
   &__info {
@@ -79,13 +88,24 @@
     &:not(:last-child) {
       margin-right: 4.5rem;
     }
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 1.32rem;
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
   }
 
   &__info-icon {
     height: 2.35rem;
     width: 2.35rem;
-    fill: $color-primary;
+    fill: var(--color-primary);
     margin-right: 1.15rem;
+    @media only screen and (max-width: $bp-smallest) {
+      height: 2rem;
+      width: 2rem;
+      margin-right: 0.8rem;
+    }
   }
 
   &__info-data {
@@ -100,7 +120,8 @@
   }
 
   &__user-generated {
-    background-color: darken($color-grey-light-2, 2%);
+    // background-color: darken(var(--color-grey-light-2), 2%);
+    background-color: darken(#fff5f2, 2%);
 
     display: flex;
     align-items: center;
@@ -112,10 +133,20 @@
     margin-left: auto;
     margin-right: 1.75rem;
 
+    @media only screen and (max-width: $bp-smallest) {
+      height: 3rem;
+      width: 3rem;
+      margin-right: 0.5rem;
+    }
+
     svg {
       height: 2.25rem;
       width: 2.25rem;
-      fill: $color-primary;
+      fill: var(--color-primary);
+      @media only screen and (max-width: $bp-smallest) {
+        height: 2rem;
+        width: 2rem;
+      }
     }
   }
 
@@ -125,10 +156,13 @@
     padding: 5rem 8rem;
     font-size: 1.6rem;
     line-height: 1.4;
-    background-color: $color-grey-light-2;
+    background-color: var(--color-grey-light-2);
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media only screen and (max-width: $bp-smallest) {
+      padding: 3rem 4rem;
+    }
   }
 
   &__ingredient-list {
@@ -136,6 +170,9 @@
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem 3rem;
     list-style: none;
+    @media only screen and (max-width: $bp-smallest) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__ingredient {
@@ -145,7 +182,7 @@
   &__icon {
     height: 2rem;
     width: 2rem;
-    fill: $color-primary;
+    fill: var(--color-primary);
     margin-right: 1.1rem;
     flex: 0 0 auto;
     margin-top: 0.1rem;
@@ -164,16 +201,37 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media only screen and (max-width: $bp-smallest) {
+      padding: 5rem 6rem;
+    }
   }
 
   &__directions-text {
     font-size: 1.7rem;
     text-align: center;
     margin-bottom: 3.5rem;
-    color: $color-grey-dark-2;
+    color: var(--color-grey-dark-2);
   }
 
   &__publisher {
     font-weight: 700;
+  }
+
+  &__back {
+    font-family: inherit;
+    font-size: 1.4rem;
+    box-shadow: 0 0.7rem 3rem rgba(#fff, 0.2);
+    font-weight: 700;
+    position: absolute;
+    top: 3rem;
+    left: 4rem;
+    z-index: 100;
+    display: none;
+
+    &--icon {
+      height: 2rem;
+      width: 2rem;
+      fill: #fff;
+    }
   }
 }
