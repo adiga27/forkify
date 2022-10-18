@@ -260,13 +260,6 @@
       transition: all 0.5s ease-out;
       z-index: 100;
     }
-
-    & .header__menu--icon[name="menu-outline"] {
-      display: none;
-    }
-    & .header__menu--icon[name="close-outline"] {
-      display: block;
-    }
   }
 }
 
